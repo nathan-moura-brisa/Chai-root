@@ -1,6 +1,6 @@
 {
   "extends": "ts-config-single-spa",
-  "files": ["src/Anakin-root-config.ts"],
+  "files": ["src/Chai-root-config.ts"],
   "compilerOptions": {
     "declarationDir": "dist"
   },

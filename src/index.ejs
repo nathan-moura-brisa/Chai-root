@@ -9,21 +9,38 @@
   <meta http-equiv="Content-Security-Policy" content="default-src 'self' https: localhost:*; script-src 'unsafe-inline' 'unsafe-eval' https: localhost:*; connect-src https: localhost:* ws://localhost:*; style-src 'unsafe-inline' https:; object-src 'none';">
   <meta name="importmap-type" use-injector />
 
-  <script type="injector-importmap">
-    {
-      "imports": {
-        "single-spa": "https://cdn.jsdelivr.net/npm/single-spa@6.0.3/lib/es2015/esm/single-spa.min.js",
-        "@single-spa/welcome": "https://cdn.jsdelivr.net/npm/single-spa-welcome/dist/single-spa-welcome.min.js",
-        "@Anakin/root-config": "http://localhost:9000/Anakin-root-config.js",
-        "@Anakin-sale-module": "http://localhost:4200/main.js"
+  <% if (isLocal) { %>
+    <script type="injector-importmap">
+      {
+        "imports": {
+          "single-spa": "https://cdn.jsdelivr.net/npm/single-spa@6.0.3/lib/es2015/esm/single-spa.min.js",
+          "@single-spa/welcome": "https://cdn.jsdelivr.net/npm/single-spa-welcome/dist/single-spa-welcome.min.js",
+          "@Chai/root-config": "http://localhost:9000/Chai-root-config.js",
+          "@Chai-sale-module": "http://localhost:4200/main.js"
+          "@Chai-sale-login": "http://localhost:5000/main.js"
+        }
       }
-    }
-  </script>
+    </script>
+  <% }%>
+
+  <% if (environment === 'homo') { %>
+    <script type="injector-importmap">
+      {
+        "imports": {
+          "single-spa": "https://cdn.jsdelivr.net/npm/single-spa@6.0.3/lib/es2015/esm/single-spa.min.js",
+          "@single-spa/welcome": "https://cdn.jsdelivr.net/npm/single-spa-welcome/dist/single-spa-welcome.min.js",
+          "@Chai/root-config": "http://ainda-não-definido/Chai-root-config.js",
+          "@Chai-sale-module": "http://ainda-não-definido/main.js"
+        }
+      }
+    </script>
+  <% }%>
+
 
   <script type="systemjs-importmap">
     {
       "imports": {
-        "@Anakin-sale-module": "http://localhost:4200/main.js"
+        "@Chai-sale-module": "http://localhost:4200/main.js"
       }
     }
   </script>
@@ -44,7 +61,7 @@
   <main></main>
   <script>
     window.importMapInjector.initPromise.then(() => {
-      import('@Anakin/root-config');
+      import('@Chai/root-config');
     });
   </script>
   <import-map-overrides-full show-when-local-storage="devtools" dev-libs></import-map-overrides-full>
