@@ -7,7 +7,7 @@ export class AuthService {
   login(): void {}
 
   async check(): Promise<void> {
-    const url = '/api/remoto/autenticacao/token/check?noCancelOnRouteChange=true';
+    const url = 'https://novorevanh-03.brisanet.net.br/remoto/autenticacao/token/check?noCancelOnRouteChange=true';
 
     try { 
       const response = await fetch(url, {
@@ -15,6 +15,7 @@ export class AuthService {
         headers: {
           'Content-Type': 'application/json',
         },
+        credentials: 'include',
       });
 
       if (response.ok) {

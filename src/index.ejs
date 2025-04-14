@@ -23,25 +23,43 @@
 
   <!-- Add your organization's prod import map URL to this script's src  -->
   <!-- <script type="injector-importmap" src="/importmap.json"></script> -->
-
-
-  <script type="injector-importmap">
-    {
-      "imports": {
-        "@Chai/root-config": "//localhost:9000/Chai-root-config.js",
-        "@single-spa/welcome": "https://cdn.jsdelivr.net/npm/single-spa-welcome/dist/single-spa-welcome.min.js"
+  <% if (isLocal) { %>
+    <script type="injector-importmap">
+      {
+        "imports": {
+          "@Chai/root-config": "//localhost:9000/Chai-root-config.js",
+          "@single-spa/welcome": "https://cdn.jsdelivr.net/npm/single-spa-welcome/dist/single-spa-welcome.min.js"
+        }
       }
-    }
-  </script>
+    </script>
 
-  <script type="systemjs-importmap">
-    {
-      "imports": {
-        "@Chai-sale-module": "http://localhost:4200/main.js",
-        "@Chai-sale-login": "http://localhost:5000/main.js"
+    <script type="systemjs-importmap">
+      {
+        "imports": {
+          "@Chai-sale-module": "http://localhost:4200/main.js"
+        }
       }
-    }
-  </script>
+    </script>
+  <% } %>
+
+  <% if (!isLocal) { %>
+    <script type="injector-importmap">
+      {
+        "imports": {
+          "@Chai/root-config": "//chai-homo.brisanet.com.br/Chai-root-config.js",
+          "@single-spa/welcome": "https://cdn.jsdelivr.net/npm/single-spa-welcome/dist/single-spa-welcome.min.js"
+        }
+      }
+    </script>
+
+    <script type="systemjs-importmap">
+      {
+        "imports": {
+          "@Chai-sale-module": "http://chai-vendas.brisanet.com.br/main.js"
+        }
+      }
+    </script>
+  <% } %>
 
   <script src="https://cdn.jsdelivr.net/npm/zone.js@0.15.0/bundles/zone.umd.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/systemjs@6.8.3/dist/system.min.js"></script>

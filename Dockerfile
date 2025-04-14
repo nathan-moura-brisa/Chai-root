@@ -1,31 +1,19 @@
-# Etapa 1: Construção da aplicação
-FROM node:20 AS build
+#build
+FROM node:20 AS builder
 
-# Definindo o diretório de trabalho
 WORKDIR /app
-
-# Copiando os arquivos de configuração do projeto para o container
-COPY package*.json ./
-
-# Instalando dependências
-RUN npm install
-
-# Copiando o restante dos arquivos
 COPY . .
 
-# Executando o build da aplicação com webpack
-RUN npm run build:webpack
+ARG BUILD_ENV=homo
+ENV NODE_ENV=$BUILD_ENV
 
+RUN npm install && npm run build:homo
 
+#serve
 FROM nginx:alpine
 
+COPY --from=builder /app/dist /usr/share/nginx/html
 
-COPY nginx.conf /etc/nginx/nginx.conf
+COPY --chown=nginx:nginx nginx/ /etc/nginx/
 
-
-COPY --from=build /app/dist/ /usr/share/nginx/html
-
-
-EXPOSE 90
-
-CMD ["nginx", "-g", "daemon off;"]
+EXPOSE 80 443

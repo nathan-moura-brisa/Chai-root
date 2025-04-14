@@ -9,7 +9,7 @@
     "prepare": "husky install",
     "build": "concurrently npm:build:*",
     "build:webpack": "webpack --mode=production --env environment=prod",
-    "build:homo": "webpack --mode=production --env environment=homo",
+    "build:homo": "webpack --mode=production --env environment=homo isLocal=false",
     "build:types": "tsc"
   },
   "devDependencies": {

@@ -1,7 +1,8 @@
 <single-spa-router>
-  <div>
+  <!-- <div>
     <h3>Validando permissão</h3>
-  </div>
+    <button id="list-button">LISTAR PLANOS</button>
+  </div> -->
   <main>
     <route path="home">
       <application name="@single-spa/welcome"></application>
@@ -12,5 +13,8 @@
     <route path="login">
       <application name="@Chai-sale-login"></application>
     </route>
+    <route default>
+      <iframe src="/templates/not_found.html" style="height: 96vh; width: 100%;"></iframe>
+    </route>    
   </main>
 </single-spa-router>

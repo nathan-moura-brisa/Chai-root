@@ -16,12 +16,13 @@ module.exports = (webpackConfigEnv, argv) => {
 
   return merge(defaultConfig, {
     devServer: {
+      overlay: false,
       proxy: {
-        "/api": {
-          target: "https://novorevanh-02.brisanet.net.br",
+        "/teste": {
+          target: "https://novorevanh-03.brisanet.net.br",
           changeOrigin: true,
           secure: false,
-          pathRewrite: { "^/api": "" },
+          pathRewrite: { "^/teste": "" },
           cookieDomainRewrite: {
             "novorevanh-03.brisanet.net.br": "localhost"
           },
@@ -37,6 +38,7 @@ module.exports = (webpackConfigEnv, argv) => {
         template: "src/index.ejs",
         templateParameters: {
           isLocal: webpackConfigEnv && webpackConfigEnv.isLocal,
+          environment,
           orgName,
         },
       }),

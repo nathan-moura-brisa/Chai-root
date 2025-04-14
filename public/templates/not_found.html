@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Página Não Encontrada</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@300;400;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: 'Source Sans Pro', sans-serif;
+      }
+
+      .content-container {
+        display: flex;
+        height: 96vh;
+        width: 99vw;
+        padding: 20px;
+      }
+
+      .left-side {
+        width: 45%;
+        display: flex;
+        flex-direction: column;
+      }
+
+      .left-side img.logo {
+        width: 30%;
+        height: auto;
+      }
+
+      .left-side img.illustration {
+        width: 90%;
+        height: auto;
+        margin-top: 100px;
+      }
+
+      .right-side {
+        width: 55%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        margin-bottom: 50px;
+      }
+
+      .right-side h1 {
+        padding: 30px 80px;
+        font-weight: 600;
+        color: #505566;
+        font-size: clamp(24px, 4vw, 48px);
+      }
+
+      .right-side span {
+        padding: 10px 160px;
+        font-weight: 600;
+        color: #505566;
+        font-size: clamp(16px, 2.5vw, 24px);
+      }
+
+      .right-side p {
+        font-size: 18px;
+        font-weight: bold;
+        margin-top: 20px;
+        color: #777;
+      }
+
+      @media (max-width: 840px) {
+        .content-container {
+          flex-direction: column;
+          align-items: center;
+          text-align: center;
+        }
+
+        .left-side,
+        .right-side {
+          width: 100%;
+        }
+
+        .left-side img.logo {
+          width: 30%;
+        }
+
+        .left-side img.illustration {
+          width: 70%;
+          margin: 5% auto;
+          margin-top: 0;
+        }
+
+        .right-side h1,
+        .right-side span {
+          padding: 10px 20px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="content-container">
+      <div class="left-side">
+        <div>
+          <img
+            src="../assets/svg/logo_brisanet_azul.svg"
+            alt="Logo Brisanet"
+            class="logo"
+          />
+        </div>
+        <div>
+          <img
+            src="../assets/svg/not_found.svg"
+            alt="Ilustração Página Não Encontrada"
+            class="illustration"
+          />
+        </div>
+      </div>
+      <div class="right-side">
+        <h1>A página que você está tentando acessar não foi encontrada</h1>
+        <span>
+          Isso significa que... houve um erro! O sistema não conseguiu carregar
+          sua página, ou você digitou endereço errado. Então, por favor: digite
+          de novo, ou volte mais tarde.
+        </span>
+        <p>ERRO: 404</p>
+      </div>
+    </div>
+  </body>
+</html>
